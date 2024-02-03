@@ -18,6 +18,8 @@ export class Placement implements IPlacement {
     this.level = level;
   }
 
+  tick() {}
+
   renderComponent(): JSX.Element | null {
     return null;
   }

@@ -7,6 +7,7 @@ export interface IPlacement {
   x: number;
   y: number;
   level: LevelState;
+  tick(): void;
   renderComponent(): JSX.Element | null;
 }
 

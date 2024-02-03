@@ -9,6 +9,7 @@ import { ILevelState } from "@/interfaces/ILevelState.interface";
 import { placementFactory } from "./PlacementFactory";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
+import { GameLoop } from "./GameLoop";
 
 export class LevelState implements ILevelState {
   id: string;
@@ -20,6 +21,7 @@ export class LevelState implements ILevelState {
     { id: 1, x: 6, y: 4, type: PLACEMENT_TYPE_GOAL },
   ];
   componentsToRender: PlacementOrNullable[] = [];
+  gameLoop: GameLoop | null = null;
   onEmit: (newState: ILevel) => void;
 
   constructor(levelId: string, onEmit: (newState: ILevel) => void) {
@@ -27,12 +29,30 @@ export class LevelState implements ILevelState {
     this.onEmit = onEmit;
 
     this.start();
+    this.startGameLoop();
   }
 
   start() {
     this.componentsToRender = this.placements.map((config) => {
       return placementFactory.createPlacement(config, this);
     });
+    this.startGameLoop();
+  }
+
+  startGameLoop() {
+    this.gameLoop?.stop();
+    this.gameLoop = new GameLoop(() => {
+      this.tick();
+    });
+  }
+
+  tick() {
+    this.componentsToRender.forEach((placement) => {
+      // placement?.tick();
+    });
+
+    //Emit any changes to React
+    this.onEmit(this.getState());
   }
 
   getState(): ILevel {
