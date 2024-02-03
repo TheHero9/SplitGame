@@ -9,14 +9,13 @@
   --pixel-size: 1;
 }
 
-html,
-body {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-}
+/* html, body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+} */
 
 canvas {
   image-rendering: -moz-crisp-edges;
@@ -25,7 +24,7 @@ canvas {
   image-rendering: crisp-edges;
 }
 
-/* Scale up game art if we can fit it. 2x */
+/* Scale up game art if we can fit it. 2x *based on 180px*/
 @media (min-width: 360px) {
   :root {
     --pixel-size: 2;
@@ -50,14 +49,14 @@ canvas {
   }
 }
 /* 6x */
-@media (min-width: 1080px) {
+/* @media (min-width: 1080px) {
   :root {
     --pixel-size: 6;
   }
-}
+} */
 /* 7x */
-@media (min-width: 1260px) {
+/* @media (min-width: 1260px) {
   :root {
     --pixel-size: 7;
   }
-}
+} */
