@@ -1,4 +1,5 @@
 import { ILevel } from "./ILevel.interface";
+import { IConfigPlacement } from "./IConfigPlacement.interface";
 
 export interface ILevelState {
   id: string;
@@ -6,5 +7,5 @@ export interface ILevelState {
   theme: string;
   tilesWidth: number;
   tilesHeight: number;
-  placements: any[];
+  placements: IConfigPlacement[];
 }
