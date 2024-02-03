@@ -1,5 +1,4 @@
-import { CELL_SIZE, LEVEL_THEMES, THEME_BACKGROUNDS } from "@/helpers/consts";
-import Sprite from "../Sprite";
+import { THEME_BACKGROUNDS } from "@/helpers/consts";
 import styles from "./RenderLevel.module.css";
 import LevelBackgroundTilesLayer from "./LevelBackgroundTilesLayer";
 import LevelPlacementsLayer from "./LevelPlacementsLayer";
