@@ -9,6 +9,8 @@ export interface IPlacement {
   level: LevelState;
   tick(): void;
   renderComponent(): JSX.Element | null;
+  displayXY(): number[];
+  displayMovingXY(): number[];
 }
 
 export type PlacementOrNullable = IPlacement | null;
