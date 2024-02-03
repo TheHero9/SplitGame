@@ -1,11 +1,10 @@
 "use client"; // 👈 use it here
 
-import Sprite from "@/components/Sprite";
+import RenderLevel from "@/components/level-layout/RenderLevel";
 import { SPRITE_SHEET_SRC } from "@/helpers/consts";
 import React, { useEffect, useState } from "react";
-type Props = {};
 
-const App = (props: Props) => {
+const App = () => {
   const [spriteSheetImage, setSpriteSheetImage] = useState<any>(null);
 
   useEffect(() => {
@@ -22,9 +21,7 @@ const App = (props: Props) => {
 
   return (
     <>
-      <Sprite image={spriteSheetImage} frameCoord={"1x0"} />
-      <Sprite image={spriteSheetImage} frameCoord={"0x2"} />
-      <Sprite image={spriteSheetImage} frameCoord={"0x3"} />;
+      <RenderLevel spriteSheetImage={spriteSheetImage} />
     </>
   );
 };
