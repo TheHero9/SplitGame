@@ -1,14 +1,24 @@
 import { Placement } from "./Placement";
 import { LevelState } from "@/classes/LevelState";
-import { DIRECTION_RIGHT, directionUpdateMap } from "@/helpers/consts";
+import {
+  DIRECTION_RIGHT,
+  ValidDirection,
+  directionUpdateMap,
+} from "@/helpers/consts";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import Hero from "@/components/object-graphics/Hero";
 
 export class HeroPlacement extends Placement {
-  constructor(properties: IConfigPlacement, level: LevelState) {
-    super(properties, level);
+  controllerMoveRequested(direction: ValidDirection) {
+    //Attempt to start moving
+    if (this.movingPixelsRemaining > 0) {
+      return;
+    }
+
+    //Start the move
     this.movingPixelsRemaining = 16;
     this.movingPixelDirection = DIRECTION_RIGHT;
+    this.movingPixelDirection = direction;
   }
 
   tick() {
@@ -19,6 +29,7 @@ export class HeroPlacement extends Placement {
     if (this.movingPixelsRemaining === 0) {
       return;
     }
+    console.log(this.movingPixelsRemaining);
     this.movingPixelsRemaining -= this.travelPixelsPerFrame;
     if (this.movingPixelsRemaining <= 0) {
       this.movingPixelsRemaining = 0;
