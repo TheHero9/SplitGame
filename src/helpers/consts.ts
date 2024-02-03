@@ -9,6 +9,9 @@ export const LEVEL_THEMES = {
   GRAY: "GRAY",
 };
 
+export const PLACEMENT_TYPE_HERO = "HERO";
+export const PLACEMENT_TYPE_GOAL = "GOAL";
+
 export const THEME_BACKGROUNDS = {
   [LEVEL_THEMES.YELLOW]: "#2f2808",
   [LEVEL_THEMES.BLUE]: "#3d4c67",
