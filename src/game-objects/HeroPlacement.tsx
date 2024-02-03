@@ -1,10 +1,8 @@
-import Sprite from "@/components/Sprite";
 import { Placement } from "./Placement";
-import { TILES } from "@/helpers/tiles";
-import { ILevel } from "@/interfaces/ILevel.interface";
 import { LevelState } from "@/classes/LevelState";
 import { DIRECTION_RIGHT, directionUpdateMap } from "@/helpers/consts";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
+import Hero from "@/components/object-graphics/Hero";
 
 export class HeroPlacement extends Placement {
   constructor(properties: IConfigPlacement, level: LevelState) {
@@ -36,6 +34,6 @@ export class HeroPlacement extends Placement {
   }
 
   renderComponent() {
-    return <Sprite frameCoord={TILES.HERO_RIGHT} size={32} />;
+    return <Hero />;
   }
 }
