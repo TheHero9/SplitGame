@@ -12,6 +12,19 @@ export const LEVEL_THEMES = {
 export const PLACEMENT_TYPE_HERO = "HERO";
 export const PLACEMENT_TYPE_GOAL = "GOAL";
 
+export const DIRECTION_LEFT = "LEFT";
+export const DIRECTION_RIGHT = "RIGHT";
+export const DIRECTION_UP = "UP";
+export const DIRECTION_DOWN = "DOWN";
+
+export const directionUpdateMap = {
+  [DIRECTION_LEFT]: { x: -1, y: 0 },
+  [DIRECTION_RIGHT]: { x: 1, y: 0 },
+  [DIRECTION_UP]: { x: 0, y: -1 },
+  [DIRECTION_DOWN]: { x: 0, y: 1 },
+};
+export type ValidDirection = keyof typeof directionUpdateMap;
+
 export const THEME_BACKGROUNDS = {
   [LEVEL_THEMES.YELLOW]: "#2f2808",
   [LEVEL_THEMES.BLUE]: "#3d4c67",

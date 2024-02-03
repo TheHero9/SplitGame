@@ -9,8 +9,7 @@ interface ILevelPlacementsLayer {
 
 const LevelPlacementsLayer: React.FC<ILevelPlacementsLayer> = ({ level }) => {
   return level.componentsToRender.map((placement: PlacementOrNullable) => {
-    const x = placement!.x * CELL_SIZE;
-    const y = placement!.y * CELL_SIZE;
+    const [x, y] = placement?.displayXY()!;
     const style = {
       position: "absolute",
       transform: `translate3d(${x}px, ${y}px, 0)`,
