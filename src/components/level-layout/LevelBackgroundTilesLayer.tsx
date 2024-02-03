@@ -4,12 +4,11 @@ import MapCell from "./MapCell";
 
 interface ILevelBackgroundTilesLayer {
   level: any;
-  image: HTMLImageElement;
+  // image: HTMLImageElement;
 }
 
 const LevelBackgroundTilesLayer: React.FC<ILevelBackgroundTilesLayer> = ({
   level,
-  image,
 }) => {
   const widthWithWalls = level.tilesWidth + 1;
   const heightWithWalls = level.tilesHeight + 1;
@@ -48,7 +47,6 @@ const LevelBackgroundTilesLayer: React.FC<ILevelBackgroundTilesLayer> = ({
           x={x}
           y={y}
           frameCoord={getBackgroundTile(x, y)}
-          image={image}
         />
       );
     }

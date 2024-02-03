@@ -6,10 +6,9 @@ interface IMapCellProps {
   x: number;
   y: number;
   frameCoord: string;
-  image: HTMLImageElement;
 }
 
-const MapCell: React.FC<IMapCellProps> = ({ x, y, frameCoord, image }) => {
+const MapCell: React.FC<IMapCellProps> = ({ x, y, frameCoord }) => {
   return (
     <div
       style={{
@@ -18,7 +17,7 @@ const MapCell: React.FC<IMapCellProps> = ({ x, y, frameCoord, image }) => {
         top: y * CELL_SIZE,
       }}
     >
-      <Sprite frameCoord={frameCoord} image={image} />
+      <Sprite frameCoord={frameCoord} />
     </div>
   );
 };

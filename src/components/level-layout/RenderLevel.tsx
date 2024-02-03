@@ -2,12 +2,11 @@ import { CELL_SIZE, LEVEL_THEMES, THEME_BACKGROUNDS } from "@/helpers/consts";
 import Sprite from "../Sprite";
 import styles from "./RenderLevel.module.css";
 import LevelBackgroundTilesLayer from "./LevelBackgroundTilesLayer";
+import LevelPlacementsLayer from "./LevelPlacementsLayer";
 
-interface IRenderLevelProps {
-  spriteSheetImage: HTMLImageElement;
-}
+interface IRenderLevelProps {}
 
-const RenderLevel: React.FC<IRenderLevelProps> = ({ spriteSheetImage }) => {
+const RenderLevel: React.FC<IRenderLevelProps> = () => {
   const level = {
     theme: LEVEL_THEMES.BLUE,
     tilesWidth: 8,
@@ -62,26 +61,8 @@ const RenderLevel: React.FC<IRenderLevelProps> = ({ spriteSheetImage }) => {
       }}
     >
       <div className={styles.gameScreen}>
-        <LevelBackgroundTilesLayer level={level} image={spriteSheetImage} />
-        {level.placements.map((placement) => {
-          // Wrap each Sprite in a positioned div
-          const x = placement.x * CELL_SIZE;
-          const y = placement.y * CELL_SIZE;
-          const style = {
-            position: "absolute",
-            transform: `translate3d(${x}px, ${y}px, 0)`,
-          };
-
-          return (
-            //@ts-ignore
-            <div key={placement.id} style={style}>
-              <Sprite
-                image={spriteSheetImage}
-                frameCoord={placement.frameCoord}
-              />
-            </div>
-          );
-        })}
+        <LevelBackgroundTilesLayer level={level} />
+        <LevelPlacementsLayer level={level} />
       </div>
     </div>
   );

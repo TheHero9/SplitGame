@@ -1,11 +1,12 @@
-"use client"; // 👈 use it here
-
+import { spriteSheetImageAtom } from "@/atoms/spriteSheetImageAtom";
 import RenderLevel from "@/components/level-layout/RenderLevel";
 import { SPRITE_SHEET_SRC } from "@/helpers/consts";
 import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 
 const App = () => {
-  const [spriteSheetImage, setSpriteSheetImage] = useState<any>(null);
+  const [spriteSheetImage, setSpriteSheetImage] =
+    useRecoilState(spriteSheetImageAtom);
 
   useEffect(() => {
     const image = new Image();
@@ -13,7 +14,7 @@ const App = () => {
     image.onload = () => {
       setSpriteSheetImage(image);
     };
-  }, []);
+  }, [setSpriteSheetImage]);
 
   if (!spriteSheetImage?.src) {
     return null;
@@ -21,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      <RenderLevel spriteSheetImage={spriteSheetImage} />
+      <RenderLevel />
     </>
   );
 };
