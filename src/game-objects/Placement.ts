@@ -19,6 +19,8 @@ export class Placement implements IPlacement {
   travelPixelsPerFrame: number = 1.5;
   movingPixelsRemaining: number = 0;
   movingPixelDirection: ValidDirection = DIRECTION_RIGHT;
+  spriteFacingDirection: ValidDirection;
+  spriteWalkFrame: number;
 
   constructor(properties: IConfigPlacement, level: LevelState) {
     this.id = properties.id;
@@ -26,6 +28,8 @@ export class Placement implements IPlacement {
     this.x = properties.x;
     this.y = properties.y;
     this.level = level;
+    this.spriteFacingDirection = DIRECTION_RIGHT;
+    this.spriteWalkFrame = 0;
   }
 
   tick() {}

@@ -25,6 +25,19 @@ export const directionUpdateMap = {
 };
 export type ValidDirection = keyof typeof directionUpdateMap;
 
+export const BODY_SKINS = {
+  NORMAL: "NORMAL",
+  WATER: "WATER",
+  ICE: "ICE",
+  CONVEYOR: "CONVEYOR",
+  FIRE: "FIRE",
+  TELEPORT: "TELEPORT",
+  SCARED: "SCARED",
+};
+
+export const HERO_RUN_1 = "HERO_RUN_1";
+export const HERO_RUN_2 = "HERO_RUN_2";
+
 export const THEME_BACKGROUNDS = {
   [LEVEL_THEMES.YELLOW]: "#2f2808",
   [LEVEL_THEMES.BLUE]: "#3d4c67",
