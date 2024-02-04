@@ -12,6 +12,7 @@ import {
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import Hero from "@/components/object-graphics/Hero";
 import { TILES } from "@/helpers/tiles";
+import { Collision } from "@/classes/Collision";
 
 const heroSkinMap = {
   [BODY_SKINS.NORMAL]: [TILES.HERO_LEFT, TILES.HERO_RIGHT],
@@ -39,14 +40,19 @@ export class HeroPlacement extends Placement {
 
   canMoveToNextDestination(direction: ValidDirection) {
     const { x, y } = directionUpdateMap[direction];
-    const isOutOfBounds = this.level.isPositionOutOfBounds(
-      this.x + x,
-      this.y + y
-    );
+    const nextX = this.x + x;
+    const nextY = this.y + y;
+    const isOutOfBounds = this.level.isPositionOutOfBounds(nextX, nextY);
     if (isOutOfBounds) return false;
 
     /// check for solid thing
+    const collision = new Collision(this, this.level, {
+      x: nextX,
+      y: nextY,
+    });
+    if (collision.withSolidPlacement()) return false;
 
+    // Default to allowing move
     return true;
   }
 

@@ -33,6 +33,10 @@ export class Placement implements IPlacement {
 
   tick() {}
 
+  isSolidForBody(_body: any) {
+    return false;
+  }
+
   displayXY(): number[] {
     if (this.movingPixelsRemaining > 0) {
       return this.displayMovingXY();

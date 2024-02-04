@@ -1,4 +1,5 @@
 import { LevelState } from "@/classes/LevelState";
+import { Placement } from "@/game-objects/Placement";
 import { ValidDirection } from "@/helpers/consts";
 
 export interface IPlacement {
@@ -14,6 +15,7 @@ export interface IPlacement {
   spriteWalkFrame: number;
   tick(): void;
   displayXY(): number[];
+  isSolidForBody(_body: Placement): boolean;
   renderComponent(): JSX.Element | null;
 }
 

@@ -8,7 +8,7 @@ interface ILevelPlacementsLayer {
 }
 
 const LevelPlacementsLayer: React.FC<ILevelPlacementsLayer> = ({ level }) => {
-  return level.componentsToRender.map((placement: PlacementOrNullable) => {
+  return level.placements.map((placement: PlacementOrNullable) => {
     const [x, y] = placement?.displayXY()!;
     const style = {
       position: "absolute",

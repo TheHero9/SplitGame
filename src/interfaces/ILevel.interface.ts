@@ -4,5 +4,5 @@ export interface ILevel {
   theme: string;
   tilesWidth: number;
   tilesHeight: number;
-  componentsToRender: PlacementOrNullable[];
+  placements: PlacementOrNullable[];
 }
