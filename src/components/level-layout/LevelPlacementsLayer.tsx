@@ -1,4 +1,3 @@
-import { CELL_SIZE } from "@/helpers/consts";
 import React from "react";
 import { ILevel } from "@/interfaces/ILevel.interface";
 import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
@@ -13,6 +12,7 @@ const LevelPlacementsLayer: React.FC<ILevelPlacementsLayer> = ({ level }) => {
     const style = {
       position: "absolute",
       transform: `translate3d(${x}px, ${y}px, 0)`,
+      zIndex: placement?.zIndex(),
     };
 
     return (

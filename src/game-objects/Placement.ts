@@ -63,6 +63,10 @@ export class Placement implements IPlacement {
     }
   }
 
+  zIndex() {
+    return 1;
+  }
+
   renderComponent(): JSX.Element | null {
     return null;
   }

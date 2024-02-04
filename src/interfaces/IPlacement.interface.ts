@@ -16,6 +16,7 @@ export interface IPlacement {
   tick(): void;
   displayXY(): number[];
   isSolidForBody(_body: Placement): boolean;
+  zIndex(): number;
   renderComponent(): JSX.Element | null;
 }
 
