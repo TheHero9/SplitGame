@@ -1,2 +1,0 @@
-# SplitGame
-My game
