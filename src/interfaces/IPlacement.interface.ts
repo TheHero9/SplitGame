@@ -3,7 +3,7 @@ import { Placement } from "@/game-objects/Placement";
 import { ValidDirection } from "@/helpers/consts";
 
 export interface IPlacement {
-  id: number;
+  id?: number;
   type: string;
   x: number;
   y: number;

@@ -10,7 +10,7 @@ import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import { IPlacement } from "@/interfaces/IPlacement.interface";
 
 export class Placement implements IPlacement {
-  id: number;
+  id?: number;
   type: string;
   x: number;
   y: number;
