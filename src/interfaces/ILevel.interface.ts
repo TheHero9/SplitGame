@@ -5,4 +5,5 @@ export interface ILevel {
   tilesWidth: number;
   tilesHeight: number;
   placements: PlacementOrNullable[];
+  isCompleted: boolean;
 }

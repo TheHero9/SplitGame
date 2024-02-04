@@ -9,6 +9,7 @@ export interface ILevelState {
   theme: string;
   tilesWidth: number;
   tilesHeight: number;
+  isCompleted: boolean;
   placements: ConfigPlacementOrPlacement[];
   gameLoop: GameLoop;
   directionControls: DirectionControls;

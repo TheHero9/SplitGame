@@ -138,6 +138,11 @@ export class HeroPlacement extends Placement {
         y: this.y,
       });
     }
+
+    const completesLevel = collision.withCompletesLevel();
+    if (completesLevel) {
+      this.level.completeLevel();
+    }
   }
 
   renderComponent() {

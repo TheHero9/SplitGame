@@ -42,6 +42,10 @@ export class Placement implements IPlacement {
     return null;
   }
 
+  completesLevelOnCollide() {
+    return false;
+  }
+
   displayXY(): number[] {
     if (this.movingPixelsRemaining > 0) {
       return this.displayMovingXY();

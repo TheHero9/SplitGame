@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { LevelState } from "@/classes/LevelState";
 import { ILevel } from "@/interfaces/ILevel.interface";
 import FlourCount from "../hud/FlourCount";
+import LevelCompleteMessage from "../hud/LevelCompleteMessage";
 
 interface IRenderLevelProps {}
 
@@ -40,6 +41,7 @@ const RenderLevel: React.FC<IRenderLevelProps> = () => {
         <LevelPlacementsLayer level={level} />
       </div>
       <FlourCount level={level} />
+      {level.isCompleted && <LevelCompleteMessage />}
     </div>
   );
 };

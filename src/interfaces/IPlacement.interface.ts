@@ -20,6 +20,7 @@ export interface IPlacement {
   zIndex(): number;
   addsItemToInventoryOnCollide(): string | null;
   collect(): void;
+  completesLevelOnCollide(): boolean;
   renderComponent(): JSX.Element | null;
 }
 

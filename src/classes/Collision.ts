@@ -53,4 +53,11 @@ export class Collision {
       );
     });
   }
+
+  withCompletesLevel() {
+    return this.placementsAtPosition.find((p) => {
+      const placementObject = p as PlacementOrNullable;
+      return placementObject?.completesLevelOnCollide();
+    });
+  }
 }

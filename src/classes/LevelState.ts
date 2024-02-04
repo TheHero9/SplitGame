@@ -22,6 +22,7 @@ export class LevelState implements ILevelState {
   theme: string = LEVEL_THEMES.BLUE;
   tilesHeight: number = 8;
   tilesWidth: number = 8;
+  isCompleted: boolean;
   placements: ConfigPlacementOrPlacement[] = [
     { id: 0, x: 2, y: 2, type: PLACEMENT_TYPE_HERO },
     { id: 1, x: 6, y: 4, type: PLACEMENT_TYPE_GOAL },
@@ -46,6 +47,7 @@ export class LevelState implements ILevelState {
   }
 
   private start() {
+    this.isCompleted = false;
     this.placements = this.placements.map((config) => {
       return placementFactory.createPlacement(config as IConfigPlacement, this);
     });
@@ -97,12 +99,18 @@ export class LevelState implements ILevelState {
     );
   }
 
+  completeLevel() {
+    this.isCompleted = true;
+    this.gameLoop.stop();
+  }
+
   getState(): ILevel {
     return {
       theme: this.theme,
       tilesWidth: this.tilesWidth,
       tilesHeight: this.tilesHeight,
       placements: this.placements as PlacementOrNullable[],
+      isCompleted: this.isCompleted,
     };
   }
 
