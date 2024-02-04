@@ -7,7 +7,6 @@ import {
   ValidDirection,
 } from "@/helpers/consts";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
-import { ILevel } from "@/interfaces/ILevel.interface";
 import { IPlacement } from "@/interfaces/IPlacement.interface";
 
 export class Placement implements IPlacement {

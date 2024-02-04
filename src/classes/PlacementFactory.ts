@@ -1,8 +1,6 @@
 import { GoalPlacement } from "@/game-objects/GoalPlacement";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
-import { Placement } from "@/game-objects/Placement";
 import { PLACEMENT_TYPE_GOAL, PLACEMENT_TYPE_HERO } from "@/helpers/consts";
-import { ILevel } from "@/interfaces/ILevel.interface";
 import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
 import { LevelState } from "./LevelState";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
@@ -14,7 +12,7 @@ class PlacementFactory {
     return instance;
   }
 
-  getInstance(
+  private getInstance(
     config: IConfigPlacement,
     level: LevelState
   ): PlacementOrNullable {

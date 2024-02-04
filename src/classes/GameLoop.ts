@@ -8,7 +8,7 @@ export class GameLoop {
     this.start();
   }
 
-  start() {
+  private start() {
     let previousMs: number;
     const step = 1 / 60;
     const tick = (timestampMs: number) => {

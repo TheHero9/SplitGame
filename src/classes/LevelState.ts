@@ -35,7 +35,7 @@ export class LevelState implements ILevelState {
     this.startGameLoop();
   }
 
-  start() {
+  private start() {
     this.componentsToRender = this.placements.map((config) => {
       return placementFactory.createPlacement(config, this);
     });
@@ -43,10 +43,11 @@ export class LevelState implements ILevelState {
     this.heroRef = this.componentsToRender.find(
       (p) => p?.type === PLACEMENT_TYPE_HERO
     ) as HeroPlacement;
+
     this.startGameLoop();
   }
 
-  startGameLoop() {
+  private startGameLoop() {
     this.gameLoop?.stop();
     this.gameLoop = new GameLoop(() => {
       this.tick();
@@ -66,7 +67,7 @@ export class LevelState implements ILevelState {
     this.onEmit(this.getState());
   }
 
-  getState(): ILevel {
+  private getState(): ILevel {
     return {
       theme: this.theme,
       tilesWidth: this.tilesWidth,

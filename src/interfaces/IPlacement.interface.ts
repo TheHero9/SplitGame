@@ -1,5 +1,4 @@
 import { LevelState } from "@/classes/LevelState";
-import { ILevel } from "./ILevel.interface";
 import { ValidDirection } from "@/helpers/consts";
 
 export interface IPlacement {
@@ -14,9 +13,8 @@ export interface IPlacement {
   spriteFacingDirection: ValidDirection;
   spriteWalkFrame: number;
   tick(): void;
-  renderComponent(): JSX.Element | null;
   displayXY(): number[];
-  displayMovingXY(): number[];
+  renderComponent(): JSX.Element | null;
 }
 
 export type PlacementOrNullable = IPlacement | null;
