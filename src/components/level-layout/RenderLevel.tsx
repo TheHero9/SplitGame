@@ -5,6 +5,7 @@ import LevelPlacementsLayer from "./LevelPlacementsLayer";
 import { useEffect, useState } from "react";
 import { LevelState } from "@/classes/LevelState";
 import { ILevel } from "@/interfaces/ILevel.interface";
+import FlourCount from "../hud/FlourCount";
 
 interface IRenderLevelProps {}
 
@@ -38,6 +39,7 @@ const RenderLevel: React.FC<IRenderLevelProps> = () => {
         <LevelBackgroundTilesLayer level={level} />
         <LevelPlacementsLayer level={level} />
       </div>
+      <FlourCount level={level} />
     </div>
   );
 };

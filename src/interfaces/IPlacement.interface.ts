@@ -13,11 +13,13 @@ export interface IPlacement {
   movingPixelDirection: ValidDirection;
   spriteFacingDirection: ValidDirection;
   spriteWalkFrame: number;
+  hasBeenCollected: boolean;
   tick(): void;
   displayXY(): number[];
   isSolidForBody(_body: Placement): boolean;
   zIndex(): number;
   addsItemToInventoryOnCollide(): string | null;
+  collect(): void;
   renderComponent(): JSX.Element | null;
 }
 

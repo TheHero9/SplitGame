@@ -12,6 +12,7 @@ import {
 import Hero from "@/components/object-graphics/Hero";
 import { TILES } from "@/helpers/tiles";
 import { Collision } from "@/classes/Collision";
+import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
 
 const heroSkinMap = {
   [BODY_SKINS.NORMAL]: [TILES.HERO_LEFT, TILES.HERO_RIGHT],
@@ -130,9 +131,11 @@ export class HeroPlacement extends Placement {
   handleCollisions() {
     //handle collisions
     const collision = new Collision(this, this.level);
-    const collideThatAddsToInventory = collision.withPlacementAddsToInventory();
+    const collideThatAddsToInventory =
+      collision.withPlacementAddsToInventory() as PlacementOrNullable;
     if (collideThatAddsToInventory) {
       console.log("handle collision", collideThatAddsToInventory);
+      collideThatAddsToInventory.collect();
     }
   }
 

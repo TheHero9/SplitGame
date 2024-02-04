@@ -20,6 +20,7 @@ export class Placement implements IPlacement {
   movingPixelDirection: ValidDirection = DIRECTION_RIGHT;
   spriteFacingDirection: ValidDirection;
   spriteWalkFrame: number;
+  hasBeenCollected: boolean = false;
 
   constructor(properties: IConfigPlacement, level: LevelState) {
     this.id = properties.id;
@@ -65,6 +66,10 @@ export class Placement implements IPlacement {
       default:
         return [x, y + progressPixels];
     }
+  }
+
+  collect() {
+    this.hasBeenCollected = true;
   }
 
   zIndex() {

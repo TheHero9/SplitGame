@@ -44,10 +44,13 @@ export class Collision {
     });
   }
 
-  withPlacementAddsToInventory() {
+  withPlacementAddsToInventory(): ConfigPlacementOrPlacement | undefined {
     return this.placementsAtPosition.find((p) => {
       const placementObject = p as PlacementOrNullable;
-      return placementObject?.addsItemToInventoryOnCollide();
+      return (
+        !placementObject?.hasBeenCollected &&
+        placementObject?.addsItemToInventoryOnCollide()
+      );
     });
   }
 }

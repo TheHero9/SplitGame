@@ -28,6 +28,8 @@ export class LevelState implements ILevelState {
     { id: 3, x: 5, y: 2, type: PLACEMENT_TYPE_WALL },
     { id: 4, x: 6, y: 6, type: PLACEMENT_TYPE_WALL },
     { id: 5, x: 8, y: 6, type: PLACEMENT_TYPE_FLOUR },
+    { id: 6, x: 4, y: 3, type: PLACEMENT_TYPE_FLOUR },
+    { id: 7, x: 5, y: 3, type: PLACEMENT_TYPE_FLOUR },
   ];
   gameLoop: GameLoop;
   directionControls: DirectionControls = new DirectionControls();
@@ -50,8 +52,6 @@ export class LevelState implements ILevelState {
     this.heroRef = this.placements.find(
       (p) => p?.type === PLACEMENT_TYPE_HERO
     ) as HeroPlacement;
-
-    // console.log("hero ref", this.heroRef);
 
     this.startGameLoop();
   }
@@ -86,7 +86,7 @@ export class LevelState implements ILevelState {
     );
   }
 
-  private getState(): ILevel {
+  getState(): ILevel {
     return {
       theme: this.theme,
       tilesWidth: this.tilesWidth,
