@@ -26,12 +26,28 @@ export class HeroPlacement extends Placement {
       return;
     }
 
+    const canMove = this.canMoveToNextDestination(direction);
+    if (!canMove) return;
+
     //Start the move
     this.movingPixelsRemaining = 16;
     this.movingPixelDirection = DIRECTION_RIGHT;
     this.movingPixelDirection = direction;
     this.updateFacingDirection();
     this.updateWalkFrame();
+  }
+
+  canMoveToNextDestination(direction: ValidDirection) {
+    const { x, y } = directionUpdateMap[direction];
+    const isOutOfBounds = this.level.isPositionOutOfBounds(
+      this.x + x,
+      this.y + y
+    );
+    if (isOutOfBounds) return false;
+
+    /// check for solid thing
+
+    return true;
   }
 
   private updateFacingDirection() {
@@ -87,7 +103,6 @@ export class HeroPlacement extends Placement {
     if (this.movingPixelsRemaining === 0) {
       return;
     }
-    console.log(this.movingPixelsRemaining);
     this.movingPixelsRemaining -= this.travelPixelsPerFrame;
     if (this.movingPixelsRemaining <= 0) {
       this.movingPixelsRemaining = 0;
