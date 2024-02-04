@@ -37,6 +37,10 @@ export class Placement implements IPlacement {
     return false;
   }
 
+  addsItemToInventoryOnCollide(): string | null {
+    return null;
+  }
+
   displayXY(): number[] {
     if (this.movingPixelsRemaining > 0) {
       return this.displayMovingXY();

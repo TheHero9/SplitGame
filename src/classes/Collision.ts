@@ -43,4 +43,11 @@ export class Collision {
       return placementObject?.isSolidForBody(this.forBody);
     });
   }
+
+  withPlacementAddsToInventory() {
+    return this.placementsAtPosition.find((p) => {
+      const placementObject = p as PlacementOrNullable;
+      return placementObject?.addsItemToInventoryOnCollide();
+    });
+  }
 }

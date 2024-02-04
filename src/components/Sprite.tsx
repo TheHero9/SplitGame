@@ -3,12 +3,12 @@ import { CELL_SIZE } from "@/helpers/consts";
 import React, { useEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 
-type ISprite = {
+export interface ISpriteProps {
   frameCoord: string;
   size?: number;
-};
+}
 
-const Sprite: React.FC<ISprite> = ({ frameCoord, size = 16 }) => {
+const Sprite: React.FC<ISpriteProps> = ({ frameCoord, size = 16 }) => {
   const spriteSheetImage = useRecoilValue(spriteSheetImageAtom);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

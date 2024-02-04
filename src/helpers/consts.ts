@@ -13,6 +13,7 @@ export const LEVEL_THEMES = {
 export const PLACEMENT_TYPE_HERO = "HERO";
 export const PLACEMENT_TYPE_GOAL = "GOAL";
 export const PLACEMENT_TYPE_WALL = "WALL";
+export const PLACEMENT_TYPE_FLOUR = "FLOUR";
 
 export const DIRECTION_LEFT = "LEFT";
 export const DIRECTION_RIGHT = "RIGHT";

@@ -1,6 +1,7 @@
 import { GoalPlacement } from "@/game-objects/GoalPlacement";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
 import {
+  PLACEMENT_TYPE_FLOUR,
   PLACEMENT_TYPE_GOAL,
   PLACEMENT_TYPE_HERO,
   PLACEMENT_TYPE_WALL,
@@ -10,6 +11,7 @@ import { LevelState } from "./LevelState";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import { WallPlacement } from "@/game-objects/WallPlacement";
 import { ConfigPlacementOrPlacement } from "@/interfaces/ILevelState.interface";
+import { FLourPlacement } from "@/game-objects/FlourPlacement";
 
 class PlacementFactory {
   createPlacement(config: ConfigPlacementOrPlacement, level: LevelState) {
@@ -29,6 +31,8 @@ class PlacementFactory {
         return new GoalPlacement(config, level);
       case PLACEMENT_TYPE_WALL:
         return new WallPlacement(config, level);
+      case PLACEMENT_TYPE_FLOUR:
+        return new FLourPlacement(config, level);
       default:
         console.warn("NO TYPE FOUND", config?.type);
         return null;

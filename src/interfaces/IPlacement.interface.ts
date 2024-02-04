@@ -17,6 +17,7 @@ export interface IPlacement {
   displayXY(): number[];
   isSolidForBody(_body: Placement): boolean;
   zIndex(): number;
+  addsItemToInventoryOnCollide(): string | null;
   renderComponent(): JSX.Element | null;
 }
 
