@@ -3,7 +3,7 @@ import { Placement } from "./Placement";
 import ElevatedSprite from "@/components/object-graphics/ElevatedSprite";
 import { TILES } from "@/helpers/tiles";
 
-export class FLourPlacement extends Placement {
+export class FlourPlacement extends Placement {
   addsItemToInventoryOnCollide() {
     return PLACEMENT_TYPE_FLOUR;
   }

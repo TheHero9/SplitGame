@@ -15,6 +15,7 @@ import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
 import { GameLoop } from "./GameLoop";
 import { DirectionControls } from "./DirectionControls";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
+import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 
 export class LevelState implements ILevelState {
   id: string;
@@ -46,7 +47,7 @@ export class LevelState implements ILevelState {
 
   private start() {
     this.placements = this.placements.map((config) => {
-      return placementFactory.createPlacement(config, this);
+      return placementFactory.createPlacement(config as IConfigPlacement, this);
     });
 
     this.heroRef = this.placements.find(
@@ -60,6 +61,16 @@ export class LevelState implements ILevelState {
     this.gameLoop?.stop();
     this.gameLoop = new GameLoop(() => {
       this.tick();
+    });
+  }
+
+  addPlacement(config: IConfigPlacement) {
+    this.placements.push(placementFactory.createPlacement(config, this));
+  }
+
+  deletePlacement(placementToRemove: PlacementOrNullable) {
+    this.placements = this.placements.filter((p) => {
+      return p?.id !== placementToRemove?.id;
     });
   }
 

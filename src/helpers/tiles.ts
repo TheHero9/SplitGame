@@ -131,3 +131,5 @@ export const TILES = {
   CIABATTA_DEAD: "14x4",
   CIABATTA_BLAST: "6x3",
 };
+
+export type ValidTilesName = keyof typeof TILES;

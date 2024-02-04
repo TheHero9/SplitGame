@@ -5,20 +5,16 @@ import {
   DIRECTION_RIGHT,
   HERO_RUN_1,
   HERO_RUN_2,
+  PLACEMENT_TYPE_CELEBRATION,
   ValidDirection,
   Z_INDEX_LAYER_SIZE,
   directionUpdateMap,
+  heroSkinMap,
 } from "@/helpers/consts";
 import Hero from "@/components/object-graphics/Hero";
 import { TILES } from "@/helpers/tiles";
 import { Collision } from "@/classes/Collision";
 import { PlacementOrNullable } from "@/interfaces/IPlacement.interface";
-
-const heroSkinMap = {
-  [BODY_SKINS.NORMAL]: [TILES.HERO_LEFT, TILES.HERO_RIGHT],
-  [HERO_RUN_1]: [TILES.HERO_RUN_1_LEFT, TILES.HERO_RUN_1_RIGHT],
-  [HERO_RUN_2]: [TILES.HERO_RUN_2_LEFT, TILES.HERO_RUN_2_RIGHT],
-};
 
 export class HeroPlacement extends Placement {
   controllerMoveRequested(direction: ValidDirection) {
@@ -136,6 +132,11 @@ export class HeroPlacement extends Placement {
     if (collideThatAddsToInventory) {
       console.log("handle collision", collideThatAddsToInventory);
       collideThatAddsToInventory.collect();
+      this.level.addPlacement({
+        type: PLACEMENT_TYPE_CELEBRATION,
+        x: this.x,
+        y: this.y,
+      });
     }
   }
 

@@ -1,3 +1,10 @@
+import { CelebrationPlacement } from "@/game-objects/CelebrationPlacement";
+import { FlourPlacement } from "@/game-objects/FlourPlacement";
+import { GoalPlacement } from "@/game-objects/GoalPlacement";
+import { HeroPlacement } from "@/game-objects/HeroPlacement";
+import { WallPlacement } from "@/game-objects/WallPlacement";
+import { TILES } from "./tiles";
+
 export const CELL_SIZE = 16;
 export const Z_INDEX_LAYER_SIZE = 10;
 export const SPRITE_SHEET_SRC = "/ciabattas-revenge-sprites.png";
@@ -14,6 +21,7 @@ export const PLACEMENT_TYPE_HERO = "HERO";
 export const PLACEMENT_TYPE_GOAL = "GOAL";
 export const PLACEMENT_TYPE_WALL = "WALL";
 export const PLACEMENT_TYPE_FLOUR = "FLOUR";
+export const PLACEMENT_TYPE_CELEBRATION = "CELEBRATION";
 
 export const DIRECTION_LEFT = "LEFT";
 export const DIRECTION_RIGHT = "RIGHT";
@@ -27,6 +35,16 @@ export const directionUpdateMap = {
   [DIRECTION_DOWN]: { x: 0, y: 1 },
 };
 export type ValidDirection = keyof typeof directionUpdateMap;
+
+export const placementTypeClassMap = {
+  [PLACEMENT_TYPE_HERO]: HeroPlacement,
+  [PLACEMENT_TYPE_GOAL]: GoalPlacement,
+  [PLACEMENT_TYPE_WALL]: WallPlacement,
+  [PLACEMENT_TYPE_FLOUR]: FlourPlacement,
+  [PLACEMENT_TYPE_CELEBRATION]: CelebrationPlacement,
+};
+
+export type ValidClassPlacement = keyof typeof placementTypeClassMap;
 
 export const BODY_SKINS = {
   NORMAL: "NORMAL",
@@ -90,4 +108,10 @@ export const THEME_TILES_MAP = {
     BOTTOM: "13x2",
     WALL: "12x2",
   },
+};
+
+export const heroSkinMap = {
+  [BODY_SKINS.NORMAL]: [TILES.HERO_LEFT, TILES.HERO_RIGHT],
+  [HERO_RUN_1]: [TILES.HERO_RUN_1_LEFT, TILES.HERO_RUN_1_RIGHT],
+  [HERO_RUN_2]: [TILES.HERO_RUN_2_LEFT, TILES.HERO_RUN_2_RIGHT],
 };
