@@ -3,6 +3,8 @@ import {
   PLACEMENT_TYPE_FLOUR,
   PLACEMENT_TYPE_GOAL,
   PLACEMENT_TYPE_HERO,
+  PLACEMENT_TYPE_KEY,
+  PLACEMENT_TYPE_LOCK,
   PLACEMENT_TYPE_WALL,
 } from "../helpers/consts";
 
@@ -19,6 +21,10 @@ const level = {
     { x: 3, y: 3, type: PLACEMENT_TYPE_FLOUR },
     { x: 4, y: 3, type: PLACEMENT_TYPE_FLOUR },
     { x: 5, y: 3, type: PLACEMENT_TYPE_FLOUR },
+    { x: 4, y: 1, type: PLACEMENT_TYPE_LOCK, color: "BLUE" },
+    { x: 3, y: 5, type: PLACEMENT_TYPE_LOCK, color: "GREEN" },
+    { x: 2, y: 1, type: PLACEMENT_TYPE_KEY, color: "BLUE" },
+    { x: 1, y: 3, type: PLACEMENT_TYPE_KEY, color: "GREEN" },
   ],
 };
 

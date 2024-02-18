@@ -74,6 +74,7 @@ export class Placement implements IPlacement {
 
   collect() {
     this.hasBeenCollected = true;
+    this.level.inventory.add(this.addsItemToInventoryOnCollide());
   }
 
   zIndex() {

@@ -5,4 +5,5 @@ export interface IConfigPlacement {
   type: ValidClassPlacement;
   x: number;
   y: number;
+  color?: string;
 }

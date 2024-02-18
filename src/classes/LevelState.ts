@@ -17,6 +17,7 @@ import { DirectionControls } from "./DirectionControls";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
 import LevelsMap, { ValidLevelType } from "@/levels/LevelsMap";
+import { Inventory } from "./Inventory";
 
 export class LevelState implements ILevelState {
   id: string;
@@ -29,6 +30,7 @@ export class LevelState implements ILevelState {
   directionControls: DirectionControls = new DirectionControls();
   onEmit: (newState: ILevel) => void;
   private heroRef: HeroPlacement;
+  inventory: any;
 
   constructor(levelId: string, onEmit: (newState: ILevel) => void) {
     this.id = levelId;
@@ -39,20 +41,19 @@ export class LevelState implements ILevelState {
   }
 
   private start() {
+    this.isCompleted = false;
     const levelData = LevelsMap[this.id as ValidLevelType];
     this.theme = levelData.theme;
     this.tilesHeight = levelData.tilesHeight;
     this.tilesWidth = levelData.tilesWidth;
     this.placements = levelData.placements.map((config) => {
-      const configPlacement = config as IConfigPlacement;
-      return placementFactory.createPlacement(configPlacement, this);
-    });
-
-    this.isCompleted = false;
-    this.placements = this.placements.map((config) => {
       return placementFactory.createPlacement(config as IConfigPlacement, this);
     });
 
+    //Create a new inventory
+    this.inventory = new Inventory();
+
+    // Reference of the hero
     this.heroRef = this.placements.find(
       (p) => p?.type === PLACEMENT_TYPE_HERO
     ) as HeroPlacement;

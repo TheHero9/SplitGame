@@ -4,6 +4,8 @@ import { GoalPlacement } from "@/game-objects/GoalPlacement";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
 import { WallPlacement } from "@/game-objects/WallPlacement";
 import { TILES } from "./tiles";
+import { KeyPlacement } from "@/game-objects/KeyPlacement";
+import { LockPlacement } from "@/game-objects/LockPlacement";
 
 export const CELL_SIZE = 16;
 export const Z_INDEX_LAYER_SIZE = 10;
@@ -22,6 +24,8 @@ export const PLACEMENT_TYPE_GOAL = "GOAL";
 export const PLACEMENT_TYPE_WALL = "WALL";
 export const PLACEMENT_TYPE_FLOUR = "FLOUR";
 export const PLACEMENT_TYPE_CELEBRATION = "CELEBRATION";
+export const PLACEMENT_TYPE_LOCK = "LOCK";
+export const PLACEMENT_TYPE_KEY = "KEY";
 
 export const DIRECTION_LEFT = "LEFT";
 export const DIRECTION_RIGHT = "RIGHT";
@@ -42,6 +46,8 @@ export const placementTypeClassMap = {
   [PLACEMENT_TYPE_WALL]: WallPlacement,
   [PLACEMENT_TYPE_FLOUR]: FlourPlacement,
   [PLACEMENT_TYPE_CELEBRATION]: CelebrationPlacement,
+  [PLACEMENT_TYPE_LOCK]: LockPlacement,
+  [PLACEMENT_TYPE_KEY]: KeyPlacement,
 };
 
 export type ValidClassPlacement = keyof typeof placementTypeClassMap;
@@ -58,6 +64,11 @@ export const BODY_SKINS = {
 
 export const HERO_RUN_1 = "HERO_RUN_1";
 export const HERO_RUN_2 = "HERO_RUN_2";
+
+export const LOCK_KEY_COLORS = {
+  BLUE: "BLUE",
+  GREEN: "GREEN",
+};
 
 export const THEME_BACKGROUNDS = {
   [LEVEL_THEMES.YELLOW]: "#2f2808",

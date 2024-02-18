@@ -13,6 +13,7 @@ export interface ILevelState {
   placements: ConfigPlacementOrPlacement[];
   gameLoop: GameLoop;
   directionControls: DirectionControls;
+  inventory: any;
   onEmit(newState: ILevel): void;
 }
 
