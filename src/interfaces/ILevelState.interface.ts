@@ -5,7 +5,7 @@ import { PlacementOrNullable } from "./IPlacement.interface";
 import { DirectionControls } from "@/classes/DirectionControls";
 
 export interface ILevelState {
-  id: string;
+  id?: string;
   theme: string;
   tilesWidth: number;
   tilesHeight: number;

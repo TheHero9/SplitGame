@@ -16,23 +16,15 @@ import { GameLoop } from "./GameLoop";
 import { DirectionControls } from "./DirectionControls";
 import { HeroPlacement } from "@/game-objects/HeroPlacement";
 import { IConfigPlacement } from "@/interfaces/IConfigPlacement.interface";
+import LevelsMap, { ValidLevelType } from "@/levels/LevelsMap";
 
 export class LevelState implements ILevelState {
   id: string;
-  theme: string = LEVEL_THEMES.BLUE;
-  tilesHeight: number = 8;
-  tilesWidth: number = 8;
+  theme: string;
+  tilesHeight: number;
+  tilesWidth: number;
   isCompleted: boolean;
-  placements: ConfigPlacementOrPlacement[] = [
-    { id: 0, x: 2, y: 2, type: PLACEMENT_TYPE_HERO },
-    { id: 1, x: 6, y: 4, type: PLACEMENT_TYPE_GOAL },
-    { id: 2, x: 4, y: 4, type: PLACEMENT_TYPE_WALL },
-    { id: 3, x: 5, y: 2, type: PLACEMENT_TYPE_WALL },
-    { id: 4, x: 6, y: 6, type: PLACEMENT_TYPE_WALL },
-    { id: 5, x: 8, y: 6, type: PLACEMENT_TYPE_FLOUR },
-    { id: 6, x: 4, y: 3, type: PLACEMENT_TYPE_FLOUR },
-    { id: 7, x: 5, y: 3, type: PLACEMENT_TYPE_FLOUR },
-  ];
+  placements: ConfigPlacementOrPlacement[];
   gameLoop: GameLoop;
   directionControls: DirectionControls = new DirectionControls();
   onEmit: (newState: ILevel) => void;
@@ -47,6 +39,15 @@ export class LevelState implements ILevelState {
   }
 
   private start() {
+    const levelData = LevelsMap[this.id as ValidLevelType];
+    this.theme = levelData.theme;
+    this.tilesHeight = levelData.tilesHeight;
+    this.tilesWidth = levelData.tilesWidth;
+    this.placements = levelData.placements.map((config) => {
+      const configPlacement = config as IConfigPlacement;
+      return placementFactory.createPlacement(configPlacement, this);
+    });
+
     this.isCompleted = false;
     this.placements = this.placements.map((config) => {
       return placementFactory.createPlacement(config as IConfigPlacement, this);

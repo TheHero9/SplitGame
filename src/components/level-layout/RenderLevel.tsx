@@ -7,14 +7,17 @@ import { LevelState } from "@/classes/LevelState";
 import { ILevel } from "@/interfaces/ILevel.interface";
 import FlourCount from "../hud/FlourCount";
 import LevelCompleteMessage from "../hud/LevelCompleteMessage";
+import { useRecoilValue } from "recoil";
+import { currentLevelIdAtom } from "@/atoms/currentLevelIdAtom";
 
 interface IRenderLevelProps {}
 
 const RenderLevel: React.FC<IRenderLevelProps> = () => {
   const [level, setLevel] = useState<ILevel>();
+  const currentLevelId = useRecoilValue(currentLevelIdAtom);
 
   useEffect(() => {
-    const levelState = new LevelState("1-1", (newState: ILevel) => {
+    const levelState = new LevelState(currentLevelId, (newState: ILevel) => {
       setLevel(newState);
     });
 
@@ -23,7 +26,7 @@ const RenderLevel: React.FC<IRenderLevelProps> = () => {
     return () => {
       levelState.destroy();
     };
-  }, []);
+  }, [currentLevelId]);
 
   if (!level) {
     return null;

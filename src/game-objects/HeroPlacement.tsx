@@ -130,7 +130,6 @@ export class HeroPlacement extends Placement {
     const collideThatAddsToInventory =
       collision.withPlacementAddsToInventory() as PlacementOrNullable;
     if (collideThatAddsToInventory) {
-      console.log("handle collision", collideThatAddsToInventory);
       collideThatAddsToInventory.collect();
       this.level.addPlacement({
         type: PLACEMENT_TYPE_CELEBRATION,
