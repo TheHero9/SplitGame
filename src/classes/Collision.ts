@@ -37,7 +37,7 @@ export class Collision {
     });
   }
 
-  withSolidPlacement() {
+  withSolidPlacement(): ConfigPlacementOrPlacement | undefined {
     return this.placementsAtPosition.find((p) => {
       const placementObject = p as PlacementOrNullable;
       return placementObject?.isSolidForBody(this.forBody);
@@ -54,7 +54,7 @@ export class Collision {
     });
   }
 
-  withCompletesLevel() {
+  withCompletesLevel(): ConfigPlacementOrPlacement | undefined {
     return this.placementsAtPosition.find((p) => {
       const placementObject = p as PlacementOrNullable;
       return placementObject?.completesLevelOnCollide();
